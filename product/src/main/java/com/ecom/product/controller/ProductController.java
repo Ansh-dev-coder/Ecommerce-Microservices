@@ -4,6 +4,8 @@ import com.ecom.product.request.ProductRequest;
 import com.ecom.product.response.ProductResponse;
 import com.ecom.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +16,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/products")
 public class ProductController {
-
+    private static final Logger logger= LoggerFactory.getLogger(ProductController.class);
     private final ProductService productService;
 
     @PostMapping
     public ResponseEntity<ProductResponse> createProduct(@RequestBody ProductRequest productRequest) {
-        return new ResponseEntity<ProductResponse>(productService.createProduct(productRequest),
-                HttpStatus.CREATED);
+        return new ResponseEntity<ProductResponse>(productService.createProduct(productRequest), HttpStatus.CREATED);
     }
 
     @GetMapping
