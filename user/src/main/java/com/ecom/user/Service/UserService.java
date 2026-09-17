@@ -28,20 +28,16 @@ public class UserService {
                 .map(this::mapToUserResponse)
                 .collect(Collectors.toList());
     }
-
     public void addUser(UserRequest userRequest){
 //        user.setId(nextId++);
         User user = new User();
         updateUserFromRequest(user, userRequest);
         userRepository.save(user);
     }
-
     public Optional<UserResponse> fetchUser(String id) {
         return userRepository.findById(String.valueOf(id))
                 .map(this::mapToUserResponse);
     }
-
-
     public boolean updateUser(String id, UserRequest updatedUserRequest) {
         return userRepository.findById(String.valueOf(id))
                 .map(existingUser -> {
@@ -50,7 +46,6 @@ public class UserService {
                     return true;
                 }).orElse(false);
     }
-
     private void updateUserFromRequest(User user, UserRequest userRequest) {
         user.setFirstName(userRequest.getFirstName());
         user.setLastName(userRequest.getLastName());
@@ -66,7 +61,6 @@ public class UserService {
             user.setAddress(address);
         }
     }
-
     private UserResponse mapToUserResponse(User user){
         UserResponse response = new UserResponse();
         response.setId(String.valueOf(user.getId()));
