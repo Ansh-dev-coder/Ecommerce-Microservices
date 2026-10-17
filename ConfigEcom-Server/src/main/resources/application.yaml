@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ConfigEcom-Server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
