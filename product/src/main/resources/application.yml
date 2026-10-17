@@ -1,5 +1,20 @@
 spring:
   application:
     name: product-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/productdb?options=-c%20TimeZone=UTC
+    username: postgres
+    password: mad___boom
+    hikari:
+      connection-init-sql: "SET TIME ZONE 'UTC'"
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate.jdbc.time_zone: UTC
 server:
   port: 8081
