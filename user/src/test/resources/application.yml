@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      database: userdb_test
+      uri: mongodb://localhost:27017/userdb_test
+  mongodb:
+    embedded:
+      version: 7.0.3
+      enabled: true
